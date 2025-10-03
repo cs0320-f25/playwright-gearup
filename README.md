@@ -1,8 +1,10 @@
-# A simple counter-App using [React.js](https://reactjs.org)
+# Playwright
 
-> **This tiny application is like adding,removing,deleting, resetting products which reflects in the total number of products into our shopping cart.**
+Sample code for the playwright gearup, forked from a simple counter-App made using [React.js](https://reactjs.org) by @arnab-datta on GitHub
 
-**This is a very basic app but useful to understand the React Components, states, Data Flow, parent to child etc. .**
+> **This tiny application mimics adding, removing, deleting, and resetting products within a shopping cart.**
+
+This is a very basic app, but useful to understand the React Components, states, Data Flow, parent to child etc.
 
 ## Live URL 1:-
 
@@ -26,3 +28,5 @@ In the project directory, you can run:
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## TODOs:
