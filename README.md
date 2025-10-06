@@ -30,3 +30,8 @@ Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## TODOs:
+
+#### src/index.css
+
+1. Try to get the first media query to activate
+2. Create a dark mode for the application using media queries

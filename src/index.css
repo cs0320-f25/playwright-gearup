@@ -41,3 +41,14 @@ code {
 .badge {
   width: 70px !important;
 }
+
+/* TODO #1: experiment with using media queries! Try this one out */
+@media (max-height: 500px) {
+  body {
+    background-color: #6b1bac;
+  }
+}
+
+/* TODO #2: add a media query here for dark mode */
+/* We recommend adding css to the body and 
+  .card__box elements within the media query */
