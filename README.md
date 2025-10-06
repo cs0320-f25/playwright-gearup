@@ -38,6 +38,9 @@ Runs playwright tests for the application
 #### src/index.css
 
 1. Create a dark mode for the application using media queries
+
+#### tests/app.test.ts
+
 2. add a test for clicking the increment button
 3. add a test for clicking the decrement button
 4. add a test for multiple increments and decrements
