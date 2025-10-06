@@ -29,9 +29,16 @@ In the project directory, you can run:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+#### `npm run playwright`
+
+Runs playwright tests for the application
+
 ## TODOs:
 
 #### src/index.css
 
-1. Try to get the first media query to activate
-2. Create a dark mode for the application using media queries
+1. Create a dark mode for the application using media queries
+2. add a test for clicking the increment button
+3. add a test for clicking the decrement button
+4. add a test for multiple increments and decrements
+5. add any remaining tests needed (e.g. the reset button, delete button, etc.)
