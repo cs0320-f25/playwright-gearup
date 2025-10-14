@@ -1,10 +1,18 @@
 import React from "react";
 
+/**
+ * Props for the NavBar component.
+ * @property {number} totalCounters - The total number of counters with a value greater than zero.
+ */
 interface NavBarProps {
   totalCounters: number;
 }
 
-// Stateless Functional Component
+/**
+ * NavBar component for displaying the shopping cart status.
+ * @param param0 The props for the component.
+ * @returns The rendered NavBar component.
+ */
 function NavBar({ totalCounters }: NavBarProps) {
   return (
     <nav className="navbar navbar-light">

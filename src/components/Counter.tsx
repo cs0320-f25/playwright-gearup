@@ -1,10 +1,22 @@
 import React from "react";
 
+/**
+ * Represents a counter with an ID and a value.
+ * @property {number} id - The unique identifier for the counter.
+ * @property {number} value - The current value of the counter.
+ */
 interface Counter {
   id: number;
   value: number;
 }
 
+/**
+ * Props for the Counter component.
+ * @property {Counter} counter - The counter data.
+ * @property {(counter: Counter) => void} onIncrement - Handler for incrementing the counter.
+ * @property {(counter: Counter) => void} onDecrement - Handler for decrementing the counter.
+ * @property {(id: number) => void} onDelete - Handler for deleting the counter.
+ */
 interface CounterProps {
   counter: Counter;
   onIncrement: (counter: Counter) => void;
@@ -12,6 +24,11 @@ interface CounterProps {
   onDelete: (id: number) => void;
 }
 
+/**
+ * Counter component for displaying and managing a single counter.
+ * @param param0 The props for the component.
+ * @returns The rendered Counter component.
+ */
 function Counter({ counter, onIncrement, onDecrement, onDelete }: CounterProps) {
   function getBadgeClasses() {
     let classes = "badge m-2 badge-";
