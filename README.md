@@ -4,7 +4,7 @@ Sample code for the playwright gearup, forked from a simple counter-App made usi
 
 > **This tiny application mimics adding, removing, deleting, and resetting products within a shopping cart.**
 
-This is a very basic app, but useful to understand the React Components, states, Data Flow, parent to child etc.
+This is a very basic app, but useful to understand the React Components, states, Data Flow, parent to child etc. This app has a version with firebase authentication and storage, and without. To access the version with it, navigate to the branch title feat/auth-and-storage
 
 ## Live URL 1:-
 
