@@ -74,10 +74,10 @@ function App() {
       <main className="container">
         <div className="card__box">
           <LoginButton user={user} onSignIn={signInWithGoogle} onSignOut={signOutUser} onUserUpdate={setUser} />
-          {user && (
+          {/* {user && ( */}
             <div>
-              <div className="greeting"> Hi {user.displayName}!</div>
-              <div className="status" style={{ display: "grid", placeItems: "center", gap: "0.25rem", textAlign: "center" }}> {pendingWrites > 0 ? `Saving... (${pendingWrites} pending)` : "Saved"}</div>
+              {/* <div className="greeting"> Hi {user.displayName}!</div>
+              <div className="status" style={{ display: "grid", placeItems: "center", gap: "0.25rem", textAlign: "center" }}> {pendingWrites > 0 ? `Saving... (${pendingWrites} pending)` : "Saved"}</div> */}
             <NavBar totalCounters={counters.filter((c) => c.value > 0).length} />
             <Counters
               counters={counters}
@@ -87,7 +87,7 @@ function App() {
               user={user}
             />
             </div>
-          )}
+          {/* )} */}
         </div>
       </main>
     </div>
