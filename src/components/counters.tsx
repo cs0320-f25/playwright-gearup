@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import type { User } from "firebase/auth";
+import Counter from "./Counter";
 
 import {
   getRemoteCounters,
@@ -8,7 +9,6 @@ import {
   deleteCounter,
   resetCounters,
 } from "../services/counters";
-import Counter from "./Counter";
 
 interface CounterType {
   id: string;
@@ -20,7 +20,7 @@ interface CountersProps {
   setCounters: React.Dispatch<React.SetStateAction<CounterType[]>>;
   pendingWrites: number;
   setPendingWrites: React.Dispatch<React.SetStateAction<number>>;
-  user: User | null;
+  user: User;
 }
 
 function Counters({
@@ -34,7 +34,6 @@ function Counters({
   const handleIncrement = (counter: CounterType) => {
     setCounters((prev) => prev.map((c) => (c.id === counter.id ? { ...c, value: c.value + 1 } : c)));
     setPendingWrites((p) => p + 1);
-    if (!user) return;
     incrementCounter(user.uid, counter.id)
       .catch((err: any) => console.error("incrementCounter failed:", err?.code, err?.message))
       .finally(() => setPendingWrites((p) => p - 1));
@@ -43,7 +42,6 @@ function Counters({
   const handleDecrement = (counter: CounterType) => {
     setCounters((prev) => prev.map((c) => (c.id === counter.id ? { ...c, value: c.value - 1 } : c)));
     setPendingWrites((p) => p + 1);
-    if (!user) return;
     decrementCounter(user.uid, counter.id)
       .catch((err: any) => console.error("decrementCounter failed:", err?.code, err?.message))
       .finally(() => setPendingWrites((p) => p - 1));
@@ -52,7 +50,6 @@ function Counters({
   const handleReset = () => {
     setCounters((prev) => prev.map((c) => ({ ...c, value: 0 })));
     setPendingWrites((p) => p + 1);
-    if (!user) return;
     resetCounters(user.uid)
       .catch((err: any) => console.error("resetCounters failed:", err?.code, err?.message))
       .finally(() => setPendingWrites((p) => p - 1));
@@ -61,7 +58,6 @@ function Counters({
   const handleDelete = (counterId: string) => {
     setCounters((prev) => prev.filter((c) => c.id !== counterId));
     setPendingWrites((p) => p + 1);
-    if (!user) return;
     deleteCounter(user.uid, counterId)
       .catch((err: any) => console.error("deleteCounter failed:", err?.code, err?.message))
       .finally(() => setPendingWrites((p) => p - 1));
@@ -76,7 +72,6 @@ function Counters({
     ]);
 
     setPendingWrites((p) => p + 1);
-    if (!user) return;
     resetCounters(user.uid)
       .catch((err) => console.error("Failed to reset counters in Firestore:", err))
       .finally(() => setPendingWrites((p) => p - 1));
