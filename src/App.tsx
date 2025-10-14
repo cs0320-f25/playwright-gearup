@@ -43,7 +43,7 @@ function App() {
       if (currentUser) {
         try {
           const remoteCounters = await getRemoteCounters(currentUser.uid);
-          
+
           if (remoteCounters.length > 0) {
             setCounters(remoteCounters);
           } else {
@@ -80,7 +80,7 @@ function App() {
               <div className="status" style={{ display: "grid", placeItems: "center", gap: "0.25rem", textAlign: "center" }}> {pendingWrites > 0 ? `Saving... (${pendingWrites} pending)` : "Saved"}</div>
             </div>
           )}
-            <div>
+          <div>
             <NavBar totalCounters={counters.filter((c) => c.value > 0).length} />
             <Counters
               counters={counters}
@@ -89,7 +89,7 @@ function App() {
               setPendingWrites={setPendingWrites}
               user={user}
             />
-            </div>
+          </div>
         </div>
       </main>
     </div>
