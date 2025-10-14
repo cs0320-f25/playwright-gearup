@@ -49,4 +49,4 @@ Runs playwright tests for the application
 #### Firebase
 
 Place firebase values into a .env.local file at the project root (setup task)  
-7. Create the decrement and delete functions in counters.ts
+6. Create the decrement and delete functions in counters.ts
