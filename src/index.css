@@ -64,3 +64,18 @@ code {
 /* TODO #1: add a media query here for dark mode */
 /* We recommend adding css to the body and 
   .card__box elements within the media query */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #181a2a;
+    color: #e0e6f6;
+  }
+  .card__box {
+    background-color: #23263a;
+    border: 10px solid #3a3f5c;
+    color: #e0e6f6;
+    box-shadow: 0 4px 24px rgba(20, 15, 94, 0.15);
+  }
+  .navbar-brand {
+    color: white !important;
+  }
+}
