@@ -1,6 +1,7 @@
 import React from "react";
-export interface Counter {
-  id: string;
+
+interface Counter {
+  id: number;
   value: number;
 }
 
@@ -8,7 +9,7 @@ interface CounterProps {
   counter: Counter;
   onIncrement: (counter: Counter) => void;
   onDecrement: (counter: Counter) => void;
-  onDelete: (id: string) => void;
+  onDelete: (id: number) => void;
 }
 
 function Counter({ counter, onIncrement, onDecrement, onDelete }: CounterProps) {

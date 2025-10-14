@@ -1,6 +1,6 @@
-# Firebase
+# Playwright
 
-Sample code for the Firebase gearup, forked from a simple counter-App made using [React.js](https://reactjs.org) by @arnab-datta on GitHub
+Sample code for the playwright gearup, forked from a simple counter-App made using [React.js](https://reactjs.org) by @arnab-datta on GitHub
 
 > **This tiny application mimics adding, removing, deleting, and resetting products within a shopping cart.**
 
@@ -38,11 +38,6 @@ Runs playwright tests for the application
 #### src/index.css
 
 1. Create a dark mode for the application using media queries
-
-#### Firebase
-
-6. Run npm install firebase
-7. Transfer firebase values into a .env.local file at the project root
 
 #### tests/app.test.ts
 

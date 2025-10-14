@@ -1,96 +1,61 @@
-import React, { useEffect, useState } from "react";
-import NavBar from "./components/Navbar";
-import Counters from "./components/Counters";
-
-import { getRemoteCounters, createDefaultCounters } from "./services/counters";
-import LoginButton from "./components/LoginButton";
-import { auth } from "./firebaseConfig";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged,
-  User,
-} from "firebase/auth";
-
-
-const provider = new GoogleAuthProvider();
-
-function signInWithGoogle() {
-  return signInWithPopup(auth, provider);
-}
-
-function signOutUser() {
-  return signOut(auth);
-}
+import React, { useState } from "react";
+import NavBar from "./components/navbar";
+import Counters from "./components/counters";
 
 interface Counter {
-  id: string;
+  id: number;
   value: number;
 }
-const defaultCounters: Counter[] = [
-  { id: "1", value: 0 },
-  { id: "2", value: 0 },
-  { id: "3", value: 0 },
-  { id: "4", value: 0 },
-];
 
 function App() {
+  const [counters, setCounters] = useState<Counter[]>([
+    { id: 1, value: 0 },
+    { id: 2, value: 0 },
+    { id: 3, value: 0 },
+    { id: 4, value: 0 },
+  ]);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      setUser(currentUser);
+  const handleIncrement = (counter: Counter) => {
+    const updatedCounters: Counter[] = counters.map((c: Counter): Counter =>
+      c.id === counter.id ? { ...c, value: c.value + 1 } : c
+    );
+    setCounters(updatedCounters);
+  };
 
-      if (currentUser) {
-        try {
-          // Load counters from Firestore
-          const remoteCounters = await getRemoteCounters(currentUser.uid);
-          
-          if (remoteCounters.length > 0) {
-            setCounters(remoteCounters);
-          } else {
-            await createDefaultCounters(currentUser.uid, defaultCounters);
-            setCounters(defaultCounters);
-          }
-        } catch (err) {
-          console.error("Failed to load counters:", err);
-          setCounters(defaultCounters);
-        }
-      } else {
-        // Not signed in
-        setCounters(defaultCounters);
-      }
-    });
-    return unsubscribe;
-  }, []);
+  const handleDecrement = (counter: Counter) => {
+    const updatedCounters: Counter[] = counters.map((c: Counter): Counter =>
+      c.id === counter.id ? { ...c, value: c.value - 1 } : c
+    );
+    setCounters(updatedCounters);
+  };
 
+  const handleReset = () => {
+    const resetCounters: Counter[] = counters.map((c: Counter): Counter => ({ ...c, value: 0 }));
+    setCounters(resetCounters);
+  };
 
-  // The current user, null if not signed in
-  const [user, setUser] = useState<User | null>(null);
+  const handleDelete = (counterId: number) => {
+    const filteredCounters: Counter[] = counters.filter((c: Counter) => c.id !== counterId);
+    setCounters(filteredCounters);
+  };
 
-  // The list of counters
-  const [counters, setCounters] = useState<Counter[]>(defaultCounters);
-  const [pendingWrites, setPendingWrites] = useState(0);
+  const handleRestart = () => {
+    window.location.reload();
+  };
 
   return (
     <div className="main__wrap">
       <main className="container">
         <div className="card__box">
-          <LoginButton user={user} onSignIn={signInWithGoogle} onSignOut={signOutUser} onUserUpdate={setUser} />
-          {user && (
-            <div>
-              <div className="greeting"> Hi {user.displayName}!</div>
-              <div className="status" style={{ display: "grid", placeItems: "center", gap: "0.25rem", textAlign: "center" }}> {pendingWrites > 0 ? `Saving... (${pendingWrites} pending)` : "Saved"}</div>
-            <NavBar totalCounters={counters.filter((c) => c.value > 0).length} />
-            <Counters
-              counters={counters}
-              setCounters={setCounters}
-              pendingWrites={pendingWrites}
-              setPendingWrites={setPendingWrites}
-              user={user}
-            />
-            </div>
-          )}
+          <NavBar totalCounters={counters.filter((c) => c.value > 0).length} />
+          <Counters
+            counters={counters}
+            onReset={handleReset}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+            onDelete={handleDelete}
+            onRestart={handleRestart}
+          />
         </div>
       </main>
     </div>
