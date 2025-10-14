@@ -53,6 +53,7 @@ code {
   font-weight: 600;
   display: block;
 }
+
 /* TODO #1: experiment with using media queries! Try this one out */
 @media (max-height: 500px) {
   body {

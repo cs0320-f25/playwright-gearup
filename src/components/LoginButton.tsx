@@ -21,7 +21,6 @@ export default function LoginButton({ user, onSignIn, onSignOut, onUserUpdate }:
         onUserUpdate?.(null);
       } else {
         const result = await onSignIn();
-        // signInWithPopup returns a UserCredential; update parent immediately if available
         if (result && (result as any).user) {
           onUserUpdate?.((result as any).user as User);
         }

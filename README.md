@@ -4,7 +4,7 @@ Sample code for the Firebase gearup, forked from a simple counter-App made using
 
 > **This tiny application mimics adding, removing, deleting, and resetting products within a shopping cart.**
 
-This is a very basic app, but useful to understand the React Components, states, Data Flow, parent to child etc.
+This is a very basic app, but useful to understand the React Components, states, Data Flow, parent to child etc. This is the version using storage and authentication.
 
 ## Live URL 1:-
 
@@ -39,14 +39,14 @@ Runs playwright tests for the application
 
 1. Create a dark mode for the application using media queries
 
-#### Firebase
-
-2. Place firebase values into a .env.local file at the project root
-3. Create decrement and delete functions in counters.ts
-
 #### tests/app.test.ts
 
-4. add a test for clicking the increment button
-5. add a test for clicking the decrement button
-6. add a test for multiple increments and decrements
-7. add any remaining tests needed (e.g. the reset button, delete button, etc.)
+2. add a test for clicking the increment button
+3. add a test for clicking the decrement button
+4. add a test for multiple increments and decrements
+5. add any remaining tests needed (e.g. the reset button, delete button, etc.)
+
+#### Firebase
+
+Place firebase values into a .env.local file at the project root (setup task)  
+7. Create the decrement and delete functions in counters.ts

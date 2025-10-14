@@ -4,7 +4,6 @@ interface NavBarProps {
   totalCounters: number;
 }
 
-// Stateless Functional Component
 function NavBar({ totalCounters }: NavBarProps) {
   return (
     <nav className="navbar navbar-light">

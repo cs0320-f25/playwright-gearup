@@ -59,7 +59,7 @@ export async function incrementCounter(uid: string, id: string) {
   }
 }
 
-// TODO #3: Implement decrementCounter and deleteCounter functions
+// TODO #6: Implement decrementCounter and deleteCounter functions
 
 export async function decrementCounter(uid: string, id: string) {
     throw new Error("Not implemented");
