@@ -45,3 +45,7 @@ Runs playwright tests for the application
 3. add a test for clicking the decrement button
 4. add a test for multiple increments and decrements
 5. add any remaining tests needed (e.g. the reset button, delete button, etc.)
+
+#### Firebase TODOS
+
+To access these, check out to the feat/auth-and-storage branch!
