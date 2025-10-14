@@ -39,9 +39,11 @@ export async function getRemoteCounters(uid: string): Promise<Counter[]> {
 }
 
 export async function createDefaultCounters(uid: string, defaultCounters: Counter[]) {
-  for (const c of defaultCounters) {
-    await setDoc(doc(db, "users", uid, "counters", c.id), { value: c.value });
-  }
+    await Promise.all(
+    defaultCounters.map(c =>
+        setDoc(doc(db, "users", uid, "counters", c.id), { value: c.value })
+    )
+    );
 }    
 
 export async function incrementCounter(uid: string, id: string) {
@@ -57,28 +59,14 @@ export async function incrementCounter(uid: string, id: string) {
   }
 }
 
+// TODO #3: Implement decrementCounter and deleteCounter functions
+
 export async function decrementCounter(uid: string, id: string) {
-  ensureUid(uid);
-  ensureId(id);
-  try {
-    const ref = doc(db, "users", uid, "counters", id);
-    return await setDoc(ref, { value: firestoreIncrement(-1) }, { merge: true });
-  } catch (err: any) {
-    console.error("decrementCounter error:", { uid, id, code: err?.code, message: err?.message });
-    throw err;
-  }
+    throw new Error("Not implemented");
 }
 
 export async function deleteCounter(uid: string, id: string) {
-  ensureUid(uid);
-  ensureId(id);
-  try {
-    const ref = doc(db, "users", uid, "counters", id);
-    return await deleteDoc(ref);
-  } catch (err: any) {
-    console.error("deleteCounter error:", { uid, id, code: err?.code, message: err?.message });
-    throw err;
-  }
+    throw new Error("Not implemented");
 }
 
 export async function resetCounters(uid: string) {

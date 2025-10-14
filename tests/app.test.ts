@@ -11,7 +11,7 @@ test('app loads and navbar shows 0', async ({ page }) => {
   await expect(navBadge).toHaveText('0');
 });
 
-// TODO #2: add a test for clicking the increment button
-// TODO #3: add a test for clicking the decrement button
-// TODO #4: add a test for multiple increments and decrements
-// TODO #5: add any remaining tests needed (e.g. the reset button, delete button, etc.)
+// TODO #4: add a test for clicking the increment button
+// TODO #5: add a test for clicking the decrement button
+// TODO #6: add a test for multiple increments and decrements
+// TODO #7: add any remaining tests needed (e.g. the reset button, delete button, etc.)

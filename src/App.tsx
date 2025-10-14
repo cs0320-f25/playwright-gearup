@@ -13,7 +13,6 @@ import {
   User,
 } from "firebase/auth";
 
-
 const provider = new GoogleAuthProvider();
 
 function signInWithGoogle() {
@@ -43,7 +42,6 @@ function App() {
 
       if (currentUser) {
         try {
-          // Load counters from Firestore
           const remoteCounters = await getRemoteCounters(currentUser.uid);
           
           if (remoteCounters.length > 0) {
@@ -57,7 +55,6 @@ function App() {
           setCounters(defaultCounters);
         }
       } else {
-        // Not signed in
         setCounters(defaultCounters);
       }
     });
@@ -67,9 +64,9 @@ function App() {
 
   // The current user, null if not signed in
   const [user, setUser] = useState<User | null>(null);
-
   // The list of counters
   const [counters, setCounters] = useState<Counter[]>(defaultCounters);
+  // Pending writes to firestore
   const [pendingWrites, setPendingWrites] = useState(0);
 
   return (

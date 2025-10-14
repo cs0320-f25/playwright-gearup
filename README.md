@@ -41,12 +41,12 @@ Runs playwright tests for the application
 
 #### Firebase
 
-6. Run npm install firebase
-7. Transfer firebase values into a .env.local file at the project root
+2. Place firebase values into a .env.local file at the project root
+3. Create decrement and delete functions in counters.ts
 
 #### tests/app.test.ts
 
-2. add a test for clicking the increment button
-3. add a test for clicking the decrement button
-4. add a test for multiple increments and decrements
-5. add any remaining tests needed (e.g. the reset button, delete button, etc.)
+4. add a test for clicking the increment button
+5. add a test for clicking the decrement button
+6. add a test for multiple increments and decrements
+7. add any remaining tests needed (e.g. the reset button, delete button, etc.)
