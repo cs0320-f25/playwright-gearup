@@ -1,6 +1,5 @@
 import React from "react";
 import type { User } from "firebase/auth";
-
 import {
   incrementCounter,
   decrementCounter,
@@ -9,11 +8,24 @@ import {
 } from "../services/counters";
 import Counter from "./Counter";
 
+/**
+ * Represents a counter with an ID and a value.
+ * @property {string} id - The unique identifier for the counter.
+ * @property {number} value - The current value of the counter.
+ */
 interface CounterType {
   id: string;
   value: number;
 }
 
+/**
+ * Props for the Counters component.
+ * @property {CounterType[]} counters - The list of counters.
+ * @property {React.Dispatch<React.SetStateAction<CounterType[]>>} setCounters - Setter for the counters state.
+ * @property {number} pendingWrites - The number of pending writes.
+ * @property {React.Dispatch<React.SetStateAction<number>>} setPendingWrites - Setter for the pending writes state.
+ * @property {User} user - The current authenticated user.
+ */
 interface CountersProps {
   counters: CounterType[];
   setCounters: React.Dispatch<React.SetStateAction<CounterType[]>>;
@@ -22,6 +34,11 @@ interface CountersProps {
   user: User;
 }
 
+/**
+ * Counters component for displaying and managing a list of counters.
+ * @param CountersProps The props for the component.
+ * @returns The rendered Counters component.
+ */
 function Counters({
   counters,
   setCounters,
@@ -30,6 +47,10 @@ function Counters({
   user
 }: CountersProps) {
   
+  /**
+   * Handler for incrementing a counter. Increments the counter value locally and in Firestore.
+   * @param counter The counter to increment.
+   */
   const handleIncrement = (counter: CounterType) => {
     setCounters((prev) => prev.map((c) => (c.id === counter.id ? { ...c, value: c.value + 1 } : c)));
     setPendingWrites((p) => p + 1);
@@ -38,6 +59,10 @@ function Counters({
       .finally(() => setPendingWrites((p) => p - 1));
   };
 
+  /**
+   * Handler for decrementing a counter. Decrements the counter value locally and in Firestore.
+   * @param counter The counter to decrement.
+   */
   const handleDecrement = (counter: CounterType) => {
     setCounters((prev) => prev.map((c) => (c.id === counter.id ? { ...c, value: c.value - 1 } : c)));
     setPendingWrites((p) => p + 1);
@@ -46,6 +71,9 @@ function Counters({
       .finally(() => setPendingWrites((p) => p - 1));
   };
 
+  /**
+   * Handler for resetting all counters to zero. Resets counters locally and in Firestore.
+   */
   const handleReset = () => {
     setCounters((prev) => prev.map((c) => ({ ...c, value: 0 })));
     setPendingWrites((p) => p + 1);
@@ -54,6 +82,10 @@ function Counters({
       .finally(() => setPendingWrites((p) => p - 1));
   };
 
+  /**
+   * Handler for deleting a counter. Removes the counter locally and in Firestore.
+   * @param counterId The ID of the counter to delete.
+   */
   const handleDelete = (counterId: string) => {
     setCounters((prev) => prev.filter((c) => c.id !== counterId));
     setPendingWrites((p) => p + 1);
@@ -62,6 +94,9 @@ function Counters({
       .finally(() => setPendingWrites((p) => p - 1));
   };
 
+  /**
+   * Handler for restarting counters. Recreates default counters locally and in Firestore.
+   */
   const handleRestart = () => {
     setCounters([
       { id: "1", value: 0 },

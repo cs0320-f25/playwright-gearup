@@ -14,19 +14,33 @@ import {
 
 const provider = new GoogleAuthProvider();
 
+/**
+ * Signs in the user with Google authentication.
+ * @returns A promise that resolves with the result of the sign-in operation.
+ */
 function signInWithGoogle() {
   return signInWithPopup(auth, provider);
 }
 
+/**
+ * Signs out the user from Google authentication.
+ * @returns A promise that resolves with the result of the sign-out operation.
+ */
 function signOutUser() {
   return signOut(auth);
 }
 
+/**
+ * Counter interface representing a single counter's state.
+ * @property {string} id - The unique identifier for the counter.
+ * @property {number} value - The current value of the counter.
+ */
 interface Counter {
   id: string;
   value: number;
 }
 
+// Default counters to initialize for new users
 const defaultCounters: Counter[] = [
   { id: "1", value: 0 },
   { id: "2", value: 0 },
@@ -34,6 +48,10 @@ const defaultCounters: Counter[] = [
   { id: "4", value: 0 },
 ];
 
+/**
+ * Main application component.
+ * @returns The rendered App component.
+ */
 function App() {
 
   // Listener to catch when a user logs in or out
