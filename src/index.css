@@ -41,7 +41,18 @@ code {
 .badge {
   width: 70px !important;
 }
-
+.greeting {
+  margin: auto;
+  justify-self: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+#login-button {
+  margin: auto;
+  justify-self: center;
+  font-weight: 600;
+  display: block;
+}
 /* TODO #1: experiment with using media queries! Try this one out */
 @media (max-height: 500px) {
   body {
